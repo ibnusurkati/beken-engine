@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="id.beken">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <application
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:usesCleartextTraffic,android:requestLegacyExternalStorage"
+        tools:targetApi="m">
+        <activity
+            android:name=".ui.print.PrinterThermalActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Beken.NoActionBar"/>
+        <activity
+            android:name=".ui.camera.SelfieCameraActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Beken.NoActionBar.TransparentStatusBar" />
+        <activity
+            android:name=".ui.camera.IdCardCameraActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Beken.NoActionBar.TransparentStatusBar" />
+        <activity
+            android:name=".ui.webapp.WebAppActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Beken.NoActionBar" />
+        <activity
+            android:name=".ui.error.PermissionFailedActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Beken.NoActionBar.WhiteStatusBar" />
+        <activity
+            android:name=".ui.error.NoInternetActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Beken.NoActionBar.WhiteStatusBar" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
+    </application>
+
+</manifest>

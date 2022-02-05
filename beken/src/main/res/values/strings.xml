@@ -1,0 +1,24 @@
+<resources>
+    <string name="congratulations">Congratulations</string>
+    <string name="success_body">Transaction is successful</string>
+    <string name="done">Done</string>
+    <string name="title_transaction_dialog">Masukan PIN Transaksi</string>
+    <string name="description_transaction_dialog">Masukkan 6 digit PIN Beken untuk memverifikasi transaksi anda.</string>
+    <string name="confirmation">Konfirmasi</string>
+    <string name="cancel_transaction">Batalkan Transaksi</string>
+    <string name="finish">SELESAI</string>
+    <string name="access_denied">Permission di tolak!</string>
+    <string name="access_denied_desc">Kami membutuhkan beberapa akses seperti <b>kamera</b>, <b>Peyimpanan</b> dan <b>Kontak</b> untuk menjalan fitur aplikasi, silahkan berkami access agar bisa membuka aplikasi.</string>
+    <string name="give_access">Berikan Access</string>
+    <string name="back">KEMBALI</string>
+    <string name="failed_get_access">Gagal mendapatkan access!</string>
+    <string name="not_connection_internet">Tidak ada internet!</string>
+    <string name="no_internet_description">Sepertinya device anda tidak terhubunng dengan internet. silangkan hubungkan device anda dengan internet agar bisa membuka membuka aplikasi.</string>
+    <string name="failed_share_file">Gagal membagikan file</string>
+    <string name="transaction_failed">Transaksi Gagal!</string>
+    <string name="id_card_must_be_clear">Pastikan kartu identitas terlihat dengan jelas</string>
+    <string name="face_straight_to_the_camera">Menghadap lurus ke kamera</string>
+    <string name="list_printer">DAFTAR PRINTER</string>
+    <string name="yes">Ya, Benar</string>
+    <string name="no">Tidak, Batalkan</string>
+</resources>

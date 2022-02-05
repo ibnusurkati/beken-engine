@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="24dp"
+        android:background="@drawable/bg_rounded_white"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_transaction"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_lock"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/transaction_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:gravity="center_horizontal"
+            android:text="@string/title_transaction_dialog"
+            android:textColor="@color/primary_color"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_transaction" />
+
+        <TextView
+            android:id="@+id/transaction_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:gravity="center_horizontal"
+            android:text="@string/description_transaction_dialog"
+            android:textColor="@color/primary_color"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_title" />
+
+        <id.beken.ui.webapp.transaction.TransactionPin
+            android:id="@+id/transaction_pin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:focusable="true"
+            android:inputType="number|numberPassword"
+            android:maxLength="6"
+            android:minHeight="48dp"
+            android:textColor="@color/primary_color"
+            android:textIsSelectable="false"
+            app:layout_constraintEnd_toEndOf="@+id/transaction_description"
+            app:layout_constraintStart_toStartOf="@+id/transaction_description"
+            app:layout_constraintTop_toBottomOf="@+id/failed_message"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btn_confirmation"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_transaction_confirmation"
+            android:enabled="false"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/confirmation"
+            android:textColor="@drawable/btn_transaction_confirmation"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_pin" />
+
+        <ProgressBar
+            android:id="@+id/process_transaction"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:visibility="gone"
+            android:indeterminateTint="@color/accent_color"
+            app:layout_constraintEnd_toEndOf="@+id/transaction_description"
+            app:layout_constraintStart_toStartOf="@+id/transaction_description"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_description" />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="@string/cancel_transaction"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_color"
+            app:layout_constraintEnd_toEndOf="@+id/btn_confirmation"
+            app:layout_constraintStart_toStartOf="@+id/btn_confirmation"
+            app:layout_constraintTop_toBottomOf="@+id/btn_confirmation" />
+
+        <TextView
+            android:id="@+id/failed_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_rounded_red"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/accent_color"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/transaction_description"
+            app:layout_constraintStart_toStartOf="@+id/transaction_description"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_description" />
+
+        <Button
+            android:id="@+id/btn_finish"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/btn_transaction_confirmation"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/finish"
+            android:textColor="@color/white_color"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_description" />
+
+        <Button
+            android:id="@+id/btn_back_to_first"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_transaction_confirmation"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/back"
+            android:textColor="@drawable/btn_transaction_confirmation"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/failed_message" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
