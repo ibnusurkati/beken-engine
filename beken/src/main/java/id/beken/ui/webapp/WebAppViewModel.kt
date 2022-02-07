@@ -29,7 +29,7 @@ class WebAppViewModel: ViewModel() {
 
         viewModelScope.launch {
             kotlin.runCatching {
-                MitraPartnerService.create().register(signature, authMitraPartner.publicKey, payload)
+                MitraPartnerService.create(authMitraPartner.debug).register(signature, authMitraPartner.publicKey, payload)
             }.onSuccess {
                 if (it.isSuccessful) {
                     mitraPartnerState.value = MitraPartnerState.Success(it.body())

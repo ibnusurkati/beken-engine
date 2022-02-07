@@ -153,7 +153,7 @@ class WebAppHandler(
 
                     GlobalScope.launch(Dispatchers.Main) {
                         kotlin.runCatching {
-                            TransactionService.create().trx(
+                            TransactionService.create(authMitraPartner.debug).trx(
                                 transactionData.url,
                                 signature,
                                 authMitraPartner.publicKey,

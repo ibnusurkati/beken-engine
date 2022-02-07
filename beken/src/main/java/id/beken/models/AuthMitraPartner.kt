@@ -8,5 +8,6 @@ data class AuthMitraPartner(
     val email: String,
     val phoneNumber: String?,
     val secretKey: String,
-    val publicKey: String
+    val publicKey: String,
+    val debug: Boolean = true
 ) : Serializable

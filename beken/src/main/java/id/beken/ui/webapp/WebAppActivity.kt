@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import id.beken.BekenApp
-import id.beken.BuildConfig
 import id.beken.R
 import id.beken.models.AuthMitraPartner
 import id.beken.ui.error.PermissionFailedActivity
@@ -26,6 +25,7 @@ import id.beken.ui.print.PrinterViewModel
 import id.beken.ui.webapp.state.MitraPartnerState
 import id.beken.ui.webapp.transaction.TransactionDialog
 import id.beken.utils.extensions.failedRegisterMitraPartner
+import id.beken.utils.helpers.homeURL
 import java.io.File
 
 @Suppress("PrivatePropertyName")
@@ -95,7 +95,7 @@ class WebAppActivity : AppCompatActivity() {
                     WebAppHandler(this, webApp, authMitraPartner),
                     "BekenNative"
                 )
-                webApp.loadUrl(BuildConfig.HOME_URL)
+                webApp.loadUrl(homeURL(authMitraPartner.debug))
             }
             is MitraPartnerState.Error -> {
                 TransactionDialog.build(this).failedRegisterMitraPartner(

@@ -1,7 +1,6 @@
 package id.beken.data.services
 
 import androidx.lifecycle.ViewModelProvider
-import id.beken.BuildConfig
 import id.beken.models.MitraPartner
 import id.beken.utils.helpers.retrofit
 import retrofit2.Response
@@ -12,8 +11,8 @@ import retrofit2.http.POST
 
 interface MitraPartnerService : ViewModelProvider.Factory {
     companion object {
-        fun create(): MitraPartnerService {
-            return retrofit(BuildConfig.BASE_URL).create(MitraPartnerService::class.java)
+        fun create(debug: Boolean): MitraPartnerService {
+            return retrofit(debug).create(MitraPartnerService::class.java)
         }
     }
 
