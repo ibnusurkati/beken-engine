@@ -162,7 +162,9 @@ class WebAppHandler(
                         }.onSuccess { response ->
                             val data = if (response.isSuccessful) {
                                 response.body()
-                            } else response.errorBody()?.string()
+                            } else {
+                                response.errorBody()?.string()
+                            }
 
                             webView.post {
                                 webView.evaluateJavascript(
@@ -170,7 +172,6 @@ class WebAppHandler(
                                     null
                                 )
                             }
-
                             if (response.isSuccessful) {
                                 it.success("Yey!. Transaksimu berhasil, di tunggu transaksinya lagi. :)")
                             } else {
@@ -178,7 +179,7 @@ class WebAppHandler(
                                 if (dataError.getString("code") == "E_PIN_INVALID") {
                                     it.failed("Maaf, pin yang anda masukan tidak valid!")
                                 } else {
-                                    it.error("Yaah!. Transaksimu gagal, mungkin sedang gangguan atau terjadi kesalahan, coba ulangi lagi ya. :(")
+                                    it.failed("Yaah!. Transaksimu gagal, mungkin sedang gangguan atau terjadi kesalahan, coba ulangi lagi ya. :(")
                                 }
                             }
                         }.onFailure { e ->
