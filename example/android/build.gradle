@@ -13,7 +13,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.5.3")
+        classpath("com.android.tools.build:gradle:4.0.1")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -37,7 +37,7 @@ allprojects {
 
             credentials {
                 username = "ibnusurkati"
-                password = "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"
+                password = "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"
             }
         }
 
