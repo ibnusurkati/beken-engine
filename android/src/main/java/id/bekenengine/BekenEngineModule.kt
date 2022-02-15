@@ -42,7 +42,8 @@ class BekenEngineModule(
             email = auth.getString("email"),
             phoneNumber = auth.optString("phoneNumber"),
             publicKey = auth.getString("publicKey"),
-            secretKey = auth.getString("secretKey")
+            secretKey = auth.getString("secretKey"),
+            debug = auth.optBoolean("debug")
         )
 
         BekenApp.open(reactContext, authMitraPartner)

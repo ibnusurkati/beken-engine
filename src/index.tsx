@@ -21,6 +21,7 @@ type AuthMitraPartner = {
   phoneNumber: string
   publicKey: string
   secretKey: string
+  debug?: boolean
 }
 
 type EmitterPayment = {
