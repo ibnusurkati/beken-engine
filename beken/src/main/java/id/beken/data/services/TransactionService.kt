@@ -1,6 +1,7 @@
 package id.beken.data.services
 
 import androidx.lifecycle.ViewModelProvider
+import id.beken.models.TransactionResponse
 import id.beken.utils.helpers.retrofit
 import retrofit2.Response
 import retrofit2.http.*
@@ -19,5 +20,5 @@ interface TransactionService : ViewModelProvider.Factory {
         @Header("Authorization") signature: String,
         @Header("public-key") publicKey: String,
         @Body body: HashMap<String, String?>
-    ): Response<String>
+    ): Response<TransactionResponse>
 }

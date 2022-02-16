@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 
-private val json = Json { ignoreUnknownKeys = true; isLenient = true; }
+private val json = Json { ignoreUnknownKeys = true; isLenient = true;  }
 
 fun retrofit(debug: Boolean): Retrofit {
     val baseUrl = if (debug) BuildConfig.BASE_URL_DEV else BuildConfig.BASE_URL_PRO

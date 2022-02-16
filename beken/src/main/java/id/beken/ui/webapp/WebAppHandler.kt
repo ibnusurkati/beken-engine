@@ -2,6 +2,7 @@ package id.beken.ui.webapp
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.widget.Toast
@@ -161,7 +162,7 @@ class WebAppHandler(
                             )
                         }.onSuccess { response ->
                             val data = if (response.isSuccessful) {
-                                response.body()
+                                json.encodeToString(response.body())
                             } else {
                                 response.errorBody()?.string()
                             }
@@ -175,6 +176,7 @@ class WebAppHandler(
                             if (response.isSuccessful) {
                                 it.success("Yey!. Transaksimu berhasil, di tunggu transaksinya lagi. :)")
                             } else {
+
                                 val dataError = JSONObject(data ?: "{\"code\":\"E_\"}")
                                 if (dataError.getString("code") == "E_PIN_INVALID") {
                                     it.failed("Maaf, pin yang anda masukan tidak valid!")
@@ -183,6 +185,7 @@ class WebAppHandler(
                                 }
                             }
                         }.onFailure { e ->
+                            Log.d("sdad", "MASUK SINI")
                             e.printStackTrace()
                             webView.post {
                                 webView.evaluateJavascript(

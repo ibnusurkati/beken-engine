@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="id.beken"
-    android:versionCode="1"
-    android:versionName="2.0.0">
+    android:versionCode="2"
+    android:versionName="2.0.1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -48,15 +48,16 @@
             android:exported="false"
             android:theme="@style/Theme.Beken.NoActionBar.WhiteStatusBar" />
 
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths" />
-        </provider>
+<!--        <provider-->
+<!--            android:name="androidx.core.content.FileProvider"-->
+<!--            android:authorities="${applicationId}.provider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/paths"-->
+<!--                tools:replace="android:resource"/>-->
+<!--        </provider>-->
     </application>
 
 </manifest>
