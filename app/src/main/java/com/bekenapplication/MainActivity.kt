@@ -14,12 +14,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mitraPartner = AuthMitraPartner(
-            uuid = "TDYTwBHwMQMjVFEnNXHRPHnPf402",
-            name = "Saipul Hidayat",
-            email = "im.saipulhidayat@gmail.com",
-            phoneNumber = "085382524285",
-            publicKey = "XSaLrfFGrGp02NEEaCstv2oMDkhvA8Iz12odB1i6eIdaz0DwglpXjVuO4No/r8Iq",
-            secretKey = "/wqlzn6CdYXaSLTXI58FHELl5p8xYMZqhmEhdg/SAWRtPM5ubJiow2lO5gpdgQOA"
+            uuid = "ayokenali-0818880882",
+            name = "Ade",
+            email = "ade@gmail.com",
+            phoneNumber = "0818880882",
+            publicKey = "3HxBcPfiS0omLy31PpPTfEVU7D1pjvLbY1xf7urdUO+ybVGj4KIpPWjpQWLV7YHH",
+            secretKey = "h9Xf1jTH0L9NXvZuKJZ845wl203JUCHqOG2qYA7DFFWovs4EXCNE/nhCaJWOgOMi"
         )
         val btmOpenProdukBeken = findViewById<Button>(R.id.btmOpenProdukBeken)
         btmOpenProdukBeken.setOnClickListener {

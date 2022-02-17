@@ -7,6 +7,8 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import id.beken.BekenApp
 import id.beken.data.repositories.ContactRepository
 import id.beken.data.services.TransactionService
@@ -24,11 +26,8 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.serialization.SerializationException
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import org.json.JSONObject
+import java.lang.Exception
 
 class WebAppHandler(
     private val activity: WebAppActivity,
@@ -58,7 +57,7 @@ class WebAppHandler(
         } else {
             contactRepository.findAll()
         }
-        return Json.encodeToString(listContacts)
+        return Gson().toJson(listContacts)
     }
 
     @JavascriptInterface
@@ -105,12 +104,12 @@ class WebAppHandler(
     fun shareReceipt(data: String) {
         try {
             val context = webView.context
-            val transactionOutput = Json.decodeFromString<TransactionOutput>(data)
+            val transactionOutput = Gson().fromJson(data, TransactionOutput::class.java)
             val content = transactionOutput.content
             val prefixFilename = transactionOutput.prefixFilename
 
             TransactionPdf.build(context, content).share(context, prefixFilename)
-        } catch (e: SerializationException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -119,13 +118,13 @@ class WebAppHandler(
     fun downloadReceipt(data: String) {
         try {
             val context = webView.context
-            val transactionOutput = Json.decodeFromString<TransactionOutput>(data)
+            val transactionOutput = Gson().fromJson(data, TransactionOutput::class.java)
             val content = transactionOutput.content
             val prefixFilename = transactionOutput.prefixFilename
 
             TransactionPdf.build(context, content).download(context, prefixFilename)
             Toast.makeText(context, "Berhasil menyimpan file!", Toast.LENGTH_SHORT).show()
-        } catch (e: SerializationException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -138,8 +137,8 @@ class WebAppHandler(
     @DelicateCoroutinesApi
     @JavascriptInterface
     fun transaction(params: String) {
-        val json = Json { ignoreUnknownKeys = true; isLenient = true; }
-        val transactionData = json.decodeFromString<TransactionData>(params)
+        val transactionData = Gson().fromJson(params, TransactionData::class.java)
+//        val transactionData = json.decodeFromString<TransactionData>(params)
         activity.lifecycleScope.launchWhenResumed {
             TransactionDialog.build(activity)
                 .onPositive {
@@ -149,7 +148,9 @@ class WebAppHandler(
                     val secretKey = authMitraPartner.secretKey
                     val signature = (publicKey + secretKey).sha256()
 
-                    val payload = json.decodeFromString<HashMap<String, String?>>(transactionData.data)
+//                    val payload = json.decodeFromString<HashMap<String, String?>>(transactionData.data)
+                    val payloadType = object : TypeToken<HashMap<String, String?>>() {}.type
+                    val payload = Gson().fromJson<HashMap<String, String?>>(transactionData.data, payloadType)
                     payload["pin"] = it.getPin()
 
                     GlobalScope.launch(Dispatchers.Main) {
@@ -162,7 +163,7 @@ class WebAppHandler(
                             )
                         }.onSuccess { response ->
                             val data = if (response.isSuccessful) {
-                                json.encodeToString(response.body())
+                                Gson().toJson(response.body())
                             } else {
                                 response.errorBody()?.string()
                             }

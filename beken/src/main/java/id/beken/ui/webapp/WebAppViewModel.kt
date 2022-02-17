@@ -3,17 +3,16 @@ package id.beken.ui.webapp
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import id.beken.data.services.MitraPartnerService
 import id.beken.models.AuthMitraPartner
 import id.beken.models.MitraPartner
 import id.beken.ui.webapp.state.MitraPartnerState
 import id.beken.utils.extensions.sha256
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 @Suppress("BlockingMethodInNonBlockingContext")
-class WebAppViewModel: ViewModel() {
+class WebAppViewModel : ViewModel() {
 
     val mitraPartnerState = MutableLiveData<MitraPartnerState>()
     val isLoading = MutableLiveData(true)
@@ -29,14 +28,16 @@ class WebAppViewModel: ViewModel() {
 
         viewModelScope.launch {
             kotlin.runCatching {
-                MitraPartnerService.create(authMitraPartner.debug).register(signature, authMitraPartner.publicKey, payload)
+                MitraPartnerService.create(authMitraPartner.debug)
+                    .register(signature, authMitraPartner.publicKey, payload)
             }.onSuccess {
                 if (it.isSuccessful) {
                     mitraPartnerState.value = MitraPartnerState.Success(it.body())
                 } else {
                     val errorBody = it.errorBody()
                     if (errorBody != null) {
-                        val mitraPartner = Json.decodeFromString<MitraPartner>(errorBody.string())
+                        val mitraPartner =
+                            Gson().fromJson(errorBody.string(), MitraPartner::class.java)
                         mitraPartnerState.value = MitraPartnerState.Error(mitraPartner.code)
                     } else {
                         mitraPartnerState.value = MitraPartnerState.Error(null)
