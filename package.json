@@ -1,6 +1,6 @@
 {
   "name": "@ibnusurkati/beken-engine",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Popular Products is an additional creative product service for application providers. With Popular Products, you can now add a variety of powerful products from Popular Products to your application.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

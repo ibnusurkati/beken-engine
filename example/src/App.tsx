@@ -6,12 +6,12 @@ export default function App() {
 
   const openBeken = () => {
     bekenEngine.open({
-      uuid: "TDYTwBHwMQMjVFEnNXHRPHnPf401",
+      uuid: "JOQJT0ulegUoKg6bfNjwaITfQRy1",
       name: "Jhon Doe",
       email: "jhon-doe@mail.com",
-      phoneNumber: "081234567890",
-      publicKey: "XSaLrfFGrGp02NEEaCstv2oMDkhvA8Iz12odB1i6eIdaz0DwglpXjVuO4No/r8Iq",
-      secretKey: "/wqlzn6CdYXaSLTXI58FHELl5p8xYMZqhmEhdg/SAWRtPM5ubJiow2lO5gpdgQOA",
+      phoneNumber: "081100299988",
+      publicKey: "w/t3emG0hfX1abxrPAHUHz+U6j28jyn7XlTBblP9dFfi7CxbX6/LYUOGieujdjNN",
+      secretKey: "93FxV1E3jlyzy8YZLHguXAcbmHUjcPOfYTGMkyninx/B1yegKCXHGTtPjW8sgsXn",
       debug: true
     })
   }
