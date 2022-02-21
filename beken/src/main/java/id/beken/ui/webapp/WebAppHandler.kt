@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.Exception
 
+@Suppress("BlockingMethodInNonBlockingContext")
 class WebAppHandler(
     private val activity: WebAppActivity,
     private val webView: WebView,
@@ -138,7 +139,6 @@ class WebAppHandler(
     @JavascriptInterface
     fun transaction(params: String) {
         val transactionData = Gson().fromJson(params, TransactionData::class.java)
-//        val transactionData = json.decodeFromString<TransactionData>(params)
         activity.lifecycleScope.launchWhenResumed {
             TransactionDialog.build(activity)
                 .onPositive {
@@ -148,9 +148,8 @@ class WebAppHandler(
                     val secretKey = authMitraPartner.secretKey
                     val signature = (publicKey + secretKey).sha256()
 
-//                    val payload = json.decodeFromString<HashMap<String, String?>>(transactionData.data)
-                    val payloadType = object : TypeToken<HashMap<String, String?>>() {}.type
-                    val payload = Gson().fromJson<HashMap<String, String?>>(transactionData.data, payloadType)
+                    val payloadType = object : TypeToken<HashMap<String, String>>() {}.type
+                    val payload = Gson().fromJson<HashMap<String, String>>(transactionData.data, payloadType)
                     payload["pin"] = it.getPin()
 
                     GlobalScope.launch(Dispatchers.Main) {
@@ -167,6 +166,7 @@ class WebAppHandler(
                             } else {
                                 response.errorBody()?.string()
                             }
+                            Log.d("DATA TRX", data.toString())
 
                             webView.post {
                                 webView.evaluateJavascript(
@@ -186,7 +186,6 @@ class WebAppHandler(
                                 }
                             }
                         }.onFailure { e ->
-                            Log.d("sdad", "MASUK SINI")
                             e.printStackTrace()
                             webView.post {
                                 webView.evaluateJavascript(
@@ -199,6 +198,11 @@ class WebAppHandler(
                     }
                 }
         }
+    }
+
+    @JavascriptInterface
+    fun closeBeken() {
+        activity.finish()
     }
 
 }

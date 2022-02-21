@@ -19,6 +19,6 @@ interface TransactionService : ViewModelProvider.Factory {
         @Url url: String,
         @Header("Authorization") signature: String,
         @Header("public-key") publicKey: String,
-        @Body body: HashMap<String, String?>
+        @Body body: HashMap<String, String>
     ): Response<TransactionResponse>
 }
