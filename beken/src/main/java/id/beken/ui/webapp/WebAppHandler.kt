@@ -175,7 +175,7 @@ class WebAppHandler(
                                 )
                             }
                             if (response.isSuccessful) {
-                                it.success("Yey!. Transaksimu berhasil, di tunggu transaksinya lagi. :)")
+                                it.success("Transaksimu sedang di proses, mohon di tunggu yaa. Terima kasih. :)")
                             } else {
 
                                 val dataError = JSONObject(data ?: "{\"code\":\"E_\"}")
