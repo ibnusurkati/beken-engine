@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 31
-        versionCode 4
-        versionName "2.0.3"
+        versionCode 5
+        versionName "2.0.4"
 
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -27,8 +27,8 @@ android {
         }
         release {
             minifyEnabled false
-            buildConfigField "String", "HOME_URL_DEV", "\"http://192.168.43.116:3001\""
-//            buildConfigField "String", "HOME_URL_DEV", "\"https://sandbox-home.produkbeken.id\""
+//            buildConfigField "String", "HOME_URL_DEV", "\"http://192.168.43.116:3001\""
+            buildConfigField "String", "HOME_URL_DEV", "\"https://sandbox-home.produkbeken.id\""
             buildConfigField "String", "BASE_URL_DEV", "\"https://sandbox-api.produkbeken.id\""
             buildConfigField "String", "HOME_URL_PRO", "\"https://home.produkbeken.id\""
             buildConfigField "String", "BASE_URL_PRO", "\"https://api.produkbeken.id\""
@@ -54,7 +54,7 @@ publishing {
         bar(MavenPublication) {
             groupId 'id.produkbeken'
             artifactId 'beken-engine'
-            version '2.0.3'
+            version '2.0.4'
             artifact("$buildDir/outputs/aar/beken-release.aar")
         }
     }

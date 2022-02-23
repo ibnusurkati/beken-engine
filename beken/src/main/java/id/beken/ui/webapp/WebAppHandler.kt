@@ -51,6 +51,11 @@ class WebAppHandler(
     }
 
     @JavascriptInterface
+    fun closeBeken() {
+        activity.finish()
+    }
+
+    @JavascriptInterface
     fun contacts(limit: String?, offset: String?): String {
         val contactRepository = ContactRepository(activity.baseContext)
         val listContacts: List<Contact> = if (limit != null && offset != null) {
@@ -198,11 +203,6 @@ class WebAppHandler(
                     }
                 }
         }
-    }
-
-    @JavascriptInterface
-    fun closeBeken() {
-        activity.finish()
     }
 
 }
