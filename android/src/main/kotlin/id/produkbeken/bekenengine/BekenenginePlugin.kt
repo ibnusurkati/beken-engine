@@ -21,17 +21,9 @@ import java.lang.Exception
 class BekenenginePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
 
     private lateinit var context: Context
+    private var eventSink: EventSink? = null
     private lateinit var eventChannel: EventChannel
     private lateinit var methodChannel: MethodChannel
-
-    init {
-        BekenApp.observerPaymentOnBackground(BekenApp.FROM_NATIVE) {
-            val data = HashMap<String, Any>()
-            data.put("data", it.data)
-            Log.d("DATA TRX", data.toString())
-//            emit("listener::${it.productName.lowercase()}", data)
-        }
-    }
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         context = flutterPluginBinding.applicationContext
@@ -40,6 +32,13 @@ class BekenenginePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
 
         eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "event_bekenengine")
         eventChannel.setStreamHandler(this)
+
+        BekenApp.observerPaymentOnUI(BekenApp.FROM_NATIVE) {
+            val data = HashMap<String, Any>()
+            data.put("data", it.data)
+            data.put("event", "listener::${it.productName.lowercase()}")
+            eventSink?.success(data)
+        }
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -62,6 +61,14 @@ class BekenenginePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
                         authMitraPartner
                     )
                 }
+                "push" -> {
+                    val json = JSONObject(call.arguments.toString())
+                    val status = json.getBoolean("status")
+                    val productName = json.getString("product")
+                    val data = json.getString("data")
+
+                    BekenApp.push(status, productName, data)
+                }
                 else -> {
                     result.notImplemented()
                 }
@@ -76,12 +83,12 @@ class BekenenginePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
     }
 
     override fun onListen(arguments: Any?, events: EventSink?) {
-        Log.d("EVENT FLUTTER", "RUN")
-        Log.d("EVENT DATA", arguments.toString())
+        Log.d("BEKEN", "START")
+        eventSink = events
     }
 
     override fun onCancel(arguments: Any?) {
-        Log.d("EVENT FLUTTER", "STOP")
-        Log.d("EVENT DATA", arguments.toString())
+        Log.d("BEKEN", "STOP")
+        eventChannel.setStreamHandler(null)
     }
 }

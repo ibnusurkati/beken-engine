@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bekenengine/beken.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Beken.eventChannel.receiveBroadcastStream().listen((event) {
+      Beken.push(jsonEncode({
+        "status": true,
+        "product": "KRMTUNAI",
+        "type": "transaction",
+        "data": jsonEncode({
+          "success": true,
+          "reffid": 'QWEASD1234'
+        }),
+      }));
+    });
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -19,12 +33,12 @@ class App extends StatelessWidget {
           child: OutlinedButton(
             onPressed: () {
               Beken.open(
-                uuid: "JOQJT0ulegUoKg6bfNjwaITfQRy1",
+                uuid: "testing-081100299988",
                 name: "Jhon Dose",
                 email: "dose@mail.com",
                 phoneNumber: "081100299988",
-                publicKey: "w/t3emG0hfX1abxrPAHUHz+U6j28jyn7XlTBblP9dFfi7CxbX6/LYUOGieujdjNN",
-                secretKey: "93FxV1E3jlyzy8YZLHguXAcbmHUjcPOfYTGMkyninx/B1yegKCXHGTtPjW8sgsXn",
+                publicKey: "43YMUV5NB4WE6MLBHYXIPJKAAZDOQCL5RK24EEKETV77TP5GU2HXYAGLAKO2IYVX",
+                secretKey: "P5ALDNSKEGAIGMM3NHBXKCUMICJG4KUNVYNB2EWTWM24IV76UHRPYEWA3HSVAP4S",
                 debug: true,
               );
             },

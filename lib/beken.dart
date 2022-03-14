@@ -4,7 +4,13 @@ import 'dart:developer';
 import 'package:flutter/services.dart';
 
 class Beken {
-  static const MethodChannel _channel = const MethodChannel('method_bekenengine');
+  static const String tag = 'BEKEN';
+  static const EventChannel eventChannel = const EventChannel('event_bekenengine');
+  static const MethodChannel _methodChannel = const MethodChannel('method_bekenengine');
+
+  static void push(String data) {
+    _methodChannel.invokeMethod('push', data);
+  }
 
   static void open({
     String uuid,
@@ -16,26 +22,26 @@ class Beken {
     bool debug = true,
   }) {
     if (uuid != null && uuid == '') {
-      log("BEKEN : uuid not implemented!");
+      log("$tag : uuid not implemented!");
       return;
     }
     
     if (email != null && email == '') {
-      log("BEKEN : email not implemented!");
+      log("$tag : email not implemented!");
       return;
     }
     
     if (publicKey != null && publicKey == '') {
-      log("BEKEN : publicKey not implemented!");
+      log("$tag : publicKey not implemented!");
       return;
     }
     
     if (secretKey != null && secretKey == '') {
-      log("BEKEN : secretKey not implemented!");
+      log("$tag : secretKey not implemented!");
       return;
     }
 
-    _channel.invokeMethod(
+    _methodChannel.invokeMethod(
       'open',
       jsonEncode(
         {
