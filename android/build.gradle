@@ -1,4 +1,4 @@
-group 'id.produkbeken.bekenengine.bekenengine'
+group 'id.produkbeken.bekenengine'
 version '1.0-SNAPSHOT'
 
 buildscript {
