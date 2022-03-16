@@ -27,7 +27,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: id.produkbeken.bekenengine.bekenengine
+        package: id.produkbeken.bekenengine
         pluginClass: BekenenginePlugin
       ios:
         pluginClass: BekenenginePlugin
