@@ -3,8 +3,8 @@
 buildscript {
     ext {
         minSdkVersion = 21
-        compileSdkVersion = 31
-        targetSdkVersion = 31
+        compileSdkVersion = 30
+        targetSdkVersion = 30
         ndkVersion = "20.1.5948944"
     }
     repositories {
@@ -37,7 +37,7 @@ allprojects {
 
             credentials {
                 username = "ibnusurkati"
-                password = "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"
+                password = "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"
             }
         }
 
