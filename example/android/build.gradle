@@ -37,7 +37,7 @@ allprojects {
 
             credentials {
                 username = "ibnusurkati"
-                password = "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"
+                password = "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"
             }
         }
 
