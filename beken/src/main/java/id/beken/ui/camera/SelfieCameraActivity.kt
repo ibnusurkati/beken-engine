@@ -24,6 +24,7 @@ class SelfieCameraActivity : AppCompatActivity() {
         .setTargetResolution(Size(640, 880))
         .build()
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selfie_camera)

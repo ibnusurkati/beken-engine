@@ -4,13 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.webapp.WebAppActivity">
+    tools:context=".ui.webapp.WebAppActivity"
+    android:background="@color/primary_color">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/web_app"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_loader" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:text="Loading data, please stand by ..."
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/loader_logo_beken"
+        app:layout_constraintStart_toStartOf="@+id/loader_logo_beken"
+        app:layout_constraintTop_toBottomOf="@+id/loader_logo_beken" />
 
     <WebView
         android:id="@+id/web_app"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </WebView>
 
@@ -20,7 +49,7 @@
         android:layout_height="100dp"
         android:interpolator="@android:anim/cycle_interpolator"
         android:indeterminateDrawable="@drawable/circular_logo_beken"
-        android:background="@drawable/ic_beken"
+        android:background="@drawable/ic_loader"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

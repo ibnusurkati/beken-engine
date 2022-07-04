@@ -22,7 +22,6 @@ import id.beken.ui.print.PrinterThermalActivity
 import id.beken.ui.webapp.transaction.TransactionDialog
 import id.beken.ui.webapp.transaction.TransactionPdf
 import id.beken.utils.extensions.*
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -140,7 +139,6 @@ class WebAppHandler(
         BekenApp.pushFrom(BekenApp.FROM_NATIVE, productName, data)
     }
 
-    @DelicateCoroutinesApi
     @JavascriptInterface
     fun transaction(params: String) {
         val transactionData = Gson().fromJson(params, TransactionData::class.java)

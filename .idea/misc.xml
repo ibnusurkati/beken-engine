@@ -5,11 +5,13 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="beken/src/main/res/drawable/bg_loader_webview.xml" value="0.2845" />
         <entry key="beken/src/main/res/drawable/bg_priter_selected.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/bg_rounded_black.xml" value="0.2023148148148148" />
         <entry key="beken/src/main/res/drawable/bg_rounded_red.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/bg_rounded_white.xml" value="0.2023148148148148" />
         <entry key="beken/src/main/res/drawable/btn_printer_cancel.xml" value="0.3486111111111111" />
+        <entry key="beken/src/main/res/drawable/btn_printer_confirmation.xml" value="0.2845" />
         <entry key="beken/src/main/res/drawable/btn_take_picture.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/btn_transaction_confirmation.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/btn_transaction_done.xml" value="0.3486111111111111" />
@@ -26,6 +28,8 @@
         <entry key="beken/src/main/res/drawable/ic_lock.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/ic_print_outline.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/ic_printer_outline.xml" value="0.3486111111111111" />
+        <entry key="beken/src/main/res/drawable/ic_rocket_outline.xml" value="0.2845" />
+        <entry key="beken/src/main/res/drawable/ic_rocket_outline_1.xml" value="0.2845" />
         <entry key="beken/src/main/res/drawable/ic_success.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/layout_rounded_dark_black.xml" value="0.3486111111111111" />
         <entry key="beken/src/main/res/drawable/layout_rounded_white.xml" value="0.3486111111111111" />
@@ -38,7 +42,7 @@
         <entry key="beken/src/main/res/layout/activity_permission_failed.xml" value="0.25407608695652173" />
         <entry key="beken/src/main/res/layout/activity_printer_thermal.xml" value="0.25" />
         <entry key="beken/src/main/res/layout/activity_selfie_camera.xml" value="0.1" />
-        <entry key="beken/src/main/res/layout/activity_web_app.xml" value="0.75" />
+        <entry key="beken/src/main/res/layout/activity_web_app.xml" value="0.51772063933287" />
         <entry key="beken/src/main/res/layout/activity_webview.xml" value="0.21105072463768115" />
         <entry key="beken/src/main/res/layout/item_printer.xml" value="0.28306159420289856" />
         <entry key="beken/src/main/res/layout/printer_dilaog.xml" value="0.28306159420289856" />

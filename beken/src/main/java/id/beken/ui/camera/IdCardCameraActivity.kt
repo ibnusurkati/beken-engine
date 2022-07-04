@@ -26,6 +26,7 @@ class IdCardCameraActivity : AppCompatActivity() {
         .setTargetResolution(Size(540, 420))
         .build()
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_id_card_camera)
@@ -72,9 +73,9 @@ class IdCardCameraActivity : AppCompatActivity() {
                 try {
                     cameraProvider.unbindAll()
                     val camera = cameraProvider.bindToLifecycle(this, cameraSelector, useCaseGroup)
-                    flashMode.observe(this, {
+                    flashMode.observe(this) {
                         camera.cameraControl.enableTorch(it)
-                    })
+                    }
                 } catch (exc: Exception) {
                     exc.printStackTrace()
                     Toast.makeText(baseContext, exc.message, Toast.LENGTH_SHORT)
