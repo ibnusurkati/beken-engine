@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mitraPartner = AuthMitraPartner(
-            uuid = "bookinghotel-089670156465",
+            uuid = "bookinghotel-081240836242",
             name = "Jhon Doe",
             email = "jhon-doe@gmail.com",
-            phoneNumber = "082130944260",
+            phoneNumber = "081240836242",
             publicKey = "w/t3emG0hfX1abxrPAHUHz+U6j28jyn7XlTBblP9dFfi7CxbX6/LYUOGieujdjNN",
             secretKey = "93FxV1E3jlyzy8YZLHguXAcbmHUjcPOfYTGMkyninx/B1yegKCXHGTtPjW8sgsXn"
         )

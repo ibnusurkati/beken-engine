@@ -71,7 +71,7 @@ class PrinterThermalActivity : AppCompatActivity() {
         listPrinter.layoutManager = LinearLayoutManager(this)
         listPrinter.adapter = printerAdapter
 
-        printerViewModel.bluetoothIsEnable.observe(this, {
+        printerViewModel.bluetoothIsEnable.observe(this) {
             if (!it) {
                 PrinterDialog.build(this).setTitleAndDescription(
                     titleText = "Bluetooth Tidak Aktif!",
@@ -80,11 +80,11 @@ class PrinterThermalActivity : AppCompatActivity() {
                     finish()
                 }
             }
-        })
+        }
 
-        printerViewModel.bluetoothDevices.observe(this, {
+        printerViewModel.bluetoothDevices.observe(this) {
             printerAdapter.updateList(it)
-        })
+        }
     }
 
     override fun onStop() {
